@@ -9,11 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
-//    var storeItems : [String:Int] = ["Strawberries":5, "Bananas":4, "Blueberries":3, "Mango":2, "Kiwi":1]
-//    var cart : [String:Int]
+    var storeItems : [String:Int] = ["Strawberries":5, "Bananas":4, "Blueberries":3, "Mangos":2, "Kiwis":1]
+    var cart : [String:Int] = [:]
+    var totalPrice = 0
     
     
     @IBOutlet weak var addItemTextFieldOutlet: UITextField!
+    @IBOutlet weak var newItemNameAndPriceLabelOutlet: UILabel!
+    @IBOutlet weak var totalPriceLabelOutlet: UILabel!
     
 
     override func viewDidLoad() {
@@ -26,26 +29,62 @@ class ViewController: UIViewController {
     
     @IBAction func addItemButton(_ sender: UIButton) {
         
-//        let item = addItemTextFieldOutlet.text!
-//
-//        if item = "Strawberries"{
-//            cart[item] = 5
-//        }
-//        else if let item = storeItems["Bananas"] {
-//
-//        }
-//        else if let item = storeItems["Blueberries"]{
-//
-//        }
-//        else if let item = storeItems["Mango"] {
-//
-//        }
-//        else if let item = storeItems["Kiwi"] {
-//
-//        }
-//        else{
-//
-//        }
+        
+        if let item = addItemTextFieldOutlet.text {
+            if item == "Strawberries"
+            {
+                cart[item] = 5
+                newItemNameAndPriceLabelOutlet.text = "Strawberries, $5"
+                totalPrice += 5
+                totalPriceLabelOutlet.text = "$\(totalPrice)"
+                
+                print(cart)
+            }
+            else if item == "Bananas"
+            {
+                cart[item] = 4
+                newItemNameAndPriceLabelOutlet.text = "Bananas, $4"
+                totalPrice += 4
+                totalPriceLabelOutlet.text = "$\(totalPrice)"
+                
+                print(cart)
+            }
+            else if item == "Blueberries"
+            {
+                cart[item] = 3
+                newItemNameAndPriceLabelOutlet.text = "Blueberries, $3"
+                totalPrice += 3
+                totalPriceLabelOutlet.text = "$\(totalPrice)"
+                
+                print(cart)
+            }
+            else if item == "Mangos"
+            {
+                cart[item] = 2
+                newItemNameAndPriceLabelOutlet.text = "Mangos, $2"
+                totalPrice += 2
+                totalPriceLabelOutlet.text = "$\(totalPrice)"
+                
+                print(cart)
+            }
+            else if item == "Kiwis"
+            {
+                cart[item] = 1
+                newItemNameAndPriceLabelOutlet.text = "Kiwis, $1"
+                totalPrice += 1
+                totalPriceLabelOutlet.text = "$\(totalPrice)"
+                
+                print(cart)
+            }
+            else
+            {
+                newItemNameAndPriceLabelOutlet.text = "Item is not in cafe."
+            }
+        }
+        else
+        {
+            newItemNameAndPriceLabelOutlet.text = "Not a valid entry"
+        }
         
     }
     
