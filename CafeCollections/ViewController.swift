@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var addItemTextFieldOutlet: UITextField!
     @IBOutlet weak var newItemNameAndPriceLabelOutlet: UILabel!
     @IBOutlet weak var totalPriceLabelOutlet: UILabel!
+    @IBOutlet weak var passwordTextFieldOutlet: UITextField!
     
 
     override func viewDidLoad() {
@@ -88,6 +89,20 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func enterButtonAction(_ sender: UIButton) {
+        if passwordTextFieldOutlet.text! == "Yessir"
+        {
+            
+            performSegue(withIdentifier: passwordSegue, sender: <#T##Any?#>)
+//            let secondViewController = ViewController(nibName: nibName, bundle: nil)
+//            self.present(secondViewController, animated: true, completion: nil)
+        }
+    }
+    
+    
+}
+
+class SecondViewController: UIViewController {
     
 }
 
