@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var addNewItemTextFieldOutlet: UITextField!
     @IBOutlet weak var addNewItemPriceTextFieldOutlet: UITextField!
     @IBOutlet weak var adminOutcomeLabelOutlet: UILabel!
+    @IBOutlet weak var deleteItemTextFieldOutlet: UITextField!
     
 
     override func viewDidLoad() {
@@ -35,50 +36,13 @@ class ViewController: UIViewController {
         
         
         if let item = addItemTextFieldOutlet.text {
-            if item == "Strawberries"
+            
+            if let itemPrice = storeItems[item]
             {
-                cart[item] = 5
-                newItemNameAndPriceLabelOutlet.text = "Strawberries, $5"
-                totalPrice += 5
-                totalPriceLabelOutlet.text = "$\(totalPrice)"
-                
-                print(cart)
-            }
-            else if item == "Bananas"
-            {
-                cart[item] = 4
-                newItemNameAndPriceLabelOutlet.text = "Bananas, $4"
-                totalPrice += 4
-                totalPriceLabelOutlet.text = "$\(totalPrice)"
-                
-                print(cart)
-            }
-            else if item == "Blueberries"
-            {
-                cart[item] = 3
-                newItemNameAndPriceLabelOutlet.text = "Blueberries, $3"
-                totalPrice += 3
-                totalPriceLabelOutlet.text = "$\(totalPrice)"
-                
-                print(cart)
-            }
-            else if item == "Mangos"
-            {
-                cart[item] = 2
-                newItemNameAndPriceLabelOutlet.text = "Mangos, $2"
-                totalPrice += 2
-                totalPriceLabelOutlet.text = "$\(totalPrice)"
-                
-                print(cart)
-            }
-            else if item == "Kiwis"
-            {
-                cart[item] = 1
-                newItemNameAndPriceLabelOutlet.text = "Kiwis, $1"
-                totalPrice += 1
-                totalPriceLabelOutlet.text = "$\(totalPrice)"
-                
-                print(cart)
+            cart[item] = itemPrice
+            newItemNameAndPriceLabelOutlet.text = "\(item), $\(itemPrice)"
+            totalPrice += itemPrice
+            totalPriceLabelOutlet.text = "$\(totalPrice)"
             }
             else
             {
@@ -87,15 +51,72 @@ class ViewController: UIViewController {
         }
         else
         {
-            newItemNameAndPriceLabelOutlet.text = "Not a valid entry"
+            newItemNameAndPriceLabelOutlet.text = "Item is not in cafe."
         }
         
     }
     
     @IBAction func enterButtonAction(_ sender: UIButton) {
-        if passwordTextFieldOutlet.text! == "Yessir"
+        if let pass = passwordTextFieldOutlet.text
         {
-              //addNewItemTextFieldOutlet.text!
+            if pass == "Yessir"
+            {
+                if let addItem = addNewItemTextFieldOutlet.text
+                {
+                    if let addItemPriceString = addNewItemPriceTextFieldOutlet.text {
+                        if let addItemPrice = Int(addItemPriceString)
+                        {
+                            storeItems[addItem] = addItemPrice
+                            adminOutcomeLabelOutlet.text = "Item added to cafe"
+                        }
+                        else
+                        {
+                            adminOutcomeLabelOutlet.text = "Item price not valid"
+                        }
+                    }
+                    else
+                    {
+                        adminOutcomeLabelOutlet.text = "Item price not valid"
+                    }
+                }
+                else
+                {
+                    adminOutcomeLabelOutlet.text = "Item name not valid"
+                }
+            }
+            else
+            {
+                adminOutcomeLabelOutlet.text = "Wrong password"
+            }
+        }
+        else
+        {
+            adminOutcomeLabelOutlet.text = "Password not valid"
+        }
+    }
+    
+    
+    @IBAction func smallEnterButtonAction(_ sender: UIButton) {
+        if let pass = passwordTextFieldOutlet.text
+        {
+            if pass == "Yessir"{
+                if let deleteItem = deleteItemTextFieldOutlet.text
+                {
+                    storeItems[deleteItem] = nil
+                    adminOutcomeLabelOutlet.text = "Item removed from cafe"
+                }
+                else{
+                    adminOutcomeLabelOutlet.text = "Item not valid"
+                }
+            }
+            else
+            {
+                adminOutcomeLabelOutlet.text = "Wrong password"
+            }
+        }
+        else
+        {
+            adminOutcomeLabelOutlet.text = "Password not valid"
         }
     }
     

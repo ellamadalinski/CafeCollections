@@ -128,7 +128,6 @@
                                 <color key="tintColor" systemColor="systemGray6Color"/>
                                 <state key="normal" title="ENTER"/>
                                 <connections>
-                                    <action selector="addItemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XFL-n2-nIz"/>
                                     <action selector="enterButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PV8-v7-LNe"/>
                                 </connections>
                             </button>
@@ -139,8 +138,7 @@
                                 <color key="tintColor" systemColor="systemGray6Color"/>
                                 <state key="normal" title="ENTER"/>
                                 <connections>
-                                    <action selector="addItemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fyF-d3-jMA"/>
-                                    <action selector="enterButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yBt-9S-lA6"/>
+                                    <action selector="smallEnterButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X7P-c9-CiG"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEG-RL-qFr">
@@ -196,6 +194,7 @@
                         <outlet property="addNewItemPriceTextFieldOutlet" destination="QCB-aT-SD0" id="awi-hA-mHz"/>
                         <outlet property="addNewItemTextFieldOutlet" destination="Np4-vf-JeO" id="E6v-aH-S2d"/>
                         <outlet property="adminOutcomeLabelOutlet" destination="yEG-RL-qFr" id="Q77-kN-htj"/>
+                        <outlet property="deleteItemTextFieldOutlet" destination="aPw-K7-UDT" id="U1D-6E-X9y"/>
                         <outlet property="newItemNameAndPriceLabelOutlet" destination="CTT-8E-V0q" id="eWB-Cs-0hf"/>
                         <outlet property="passwordTextFieldOutlet" destination="omC-Fp-ScY" id="ieD-99-gOb"/>
                         <outlet property="totalPriceLabelOutlet" destination="5AQ-Ty-iwr" id="b3z-4b-h7U"/>
