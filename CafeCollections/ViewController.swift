@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     var storeItems : [String:Int] = ["Strawberries":5, "Bananas":4, "Blueberries":3, "Mangos":2, "Kiwis":1]
     var cart : [String:Int] = [:]
     var totalPrice = 0
+    var storeItemsString = "Strawberries, Bananas, Blueberries, Mangos, Kiwis"
+    var cartItemsString = ""
     
     
     @IBOutlet weak var addItemTextFieldOutlet: UITextField!
@@ -22,6 +24,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var addNewItemPriceTextFieldOutlet: UITextField!
     @IBOutlet weak var adminOutcomeLabelOutlet: UILabel!
     @IBOutlet weak var deleteItemTextFieldOutlet: UITextField!
+    @IBOutlet weak var viewItemsInStoreTextViewOutlet: UITextView!
+    @IBOutlet weak var viewItemsInCartTextViewOutlet: UITextView!
     
 
     override func viewDidLoad() {
@@ -43,6 +47,15 @@ class ViewController: UIViewController {
             newItemNameAndPriceLabelOutlet.text = "\(item), $\(itemPrice)"
             totalPrice += itemPrice
             totalPriceLabelOutlet.text = "$\(totalPrice)"
+                if(cartItemsString) == ""
+                {
+                    cartItemsString = "\(item)"
+                }
+                else
+                {
+                    cartItemsString = "\(cartItemsString), \(item)"
+                }
+//                addItemTextFieldOutlet.resignFirstResponder()
             }
             else
             {
@@ -68,6 +81,7 @@ class ViewController: UIViewController {
                         {
                             storeItems[addItem] = addItemPrice
                             adminOutcomeLabelOutlet.text = "Item added to cafe"
+                            storeItemsString = "\(storeItemsString), \(addItem)"
                         }
                         else
                         {
@@ -93,6 +107,8 @@ class ViewController: UIViewController {
         {
             adminOutcomeLabelOutlet.text = "Password not valid"
         }
+//        addNewItemTextFieldOutlet.resignFirstResponder()
+//        addNewItemPriceTextFieldOutlet.resignFirstResponder()
     }
     
     
@@ -118,6 +134,15 @@ class ViewController: UIViewController {
         {
             adminOutcomeLabelOutlet.text = "Password not valid"
         }
+    }
+    
+    @IBAction func viewItemsInStoreButtonAction(_ sender: UIButton) {
+        viewItemsInStoreTextViewOutlet.text = storeItemsString
+        print("hi")
+    }
+    
+    @IBAction func viewItemsInCartButtonAction(_ sender: UIButton) {
+        viewItemsInCartTextViewOutlet.text = cartItemsString
     }
     
 }
