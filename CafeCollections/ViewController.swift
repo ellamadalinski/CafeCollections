@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController , UITextFieldDelegate {
     
     var storeItems : [String:Int] = ["Strawberries":5, "Bananas":4, "Blueberries":3, "Mangos":2, "Kiwis":1]
     var cart : [String:Int] = [:]
@@ -31,7 +31,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        addItemTextFieldOutlet.delegate = self
+        passwordTextFieldOutlet.delegate = self
+        addNewItemTextFieldOutlet.delegate = self
+        addNewItemPriceTextFieldOutlet.delegate = self
+        deleteItemTextFieldOutlet.delegate = self
         
     }
     
@@ -55,7 +59,6 @@ class ViewController: UIViewController {
                 {
                     cartItemsString = "\(cartItemsString), \(item)"
                 }
-//                addItemTextFieldOutlet.resignFirstResponder()
             }
             else
             {
@@ -66,7 +69,7 @@ class ViewController: UIViewController {
         {
             newItemNameAndPriceLabelOutlet.text = "Item is not in cafe."
         }
-        
+        addItemTextFieldOutlet.resignFirstResponder()
     }
     
     @IBAction func enterButtonAction(_ sender: UIButton) {
@@ -107,8 +110,8 @@ class ViewController: UIViewController {
         {
             adminOutcomeLabelOutlet.text = "Password not valid"
         }
-//        addNewItemTextFieldOutlet.resignFirstResponder()
-//        addNewItemPriceTextFieldOutlet.resignFirstResponder()
+        addNewItemTextFieldOutlet.resignFirstResponder()
+        addNewItemPriceTextFieldOutlet.resignFirstResponder()
     }
     
     
@@ -134,15 +137,23 @@ class ViewController: UIViewController {
         {
             adminOutcomeLabelOutlet.text = "Password not valid"
         }
+        deleteItemTextFieldOutlet.resignFirstResponder()
     }
     
     @IBAction func viewItemsInStoreButtonAction(_ sender: UIButton) {
         viewItemsInStoreTextViewOutlet.text = storeItemsString
-        print("hi")
     }
     
     @IBAction func viewItemsInCartButtonAction(_ sender: UIButton) {
         viewItemsInCartTextViewOutlet.text = cartItemsString
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        addItemTextFieldOutlet.resignFirstResponder()
+        passwordTextFieldOutlet.resignFirstResponder()
+        addNewItemTextFieldOutlet.resignFirstResponder()
+        addNewItemPriceTextFieldOutlet.resignFirstResponder()
+        deleteItemTextFieldOutlet.resignFirstResponder()
+        return true
+    }
 }
