@@ -75,7 +75,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
     @IBAction func enterButtonAction(_ sender: UIButton) {
         if let pass = passwordTextFieldOutlet.text
         {
-            if pass == "Yessir"
+            if pass == "Seaver"
             {
                 if let addItem = addNewItemTextFieldOutlet.text
                 {
